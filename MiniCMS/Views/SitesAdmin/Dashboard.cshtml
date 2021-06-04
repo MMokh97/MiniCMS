@@ -1,0 +1,28 @@
+﻿@model MiniCMS.Models.Users
+    
+
+<div class="row" style="display: inline-block; width:100%">
+    <div class="top_tiles">
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-12 ">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-users" style="color:#0094ff"></i></div>
+                <div class="count">@ViewBag.all</div>
+                <h3>All Users</h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-12">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-check" style="color:#00ff21"></i></div>
+                <div class="count">@ViewBag.active</div>
+                <h3>Active Users</h3>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-12 ">
+            <div class="tile-stats">
+                <div class="icon"><i class="fa fa-close" style="color:#ff0000"></i></div>
+                <div class="count">@ViewBag.inactive</div>
+                <h3> InActive Users </h3>
+            </div>
+        </div>
+    </div>
+</div>

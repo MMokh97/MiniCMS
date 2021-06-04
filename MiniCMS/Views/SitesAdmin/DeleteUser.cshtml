@@ -1,0 +1,23 @@
+﻿@model MiniCMS.Models.Users
+
+@{
+
+    Layout = null;
+}
+
+<h3>Are you sure you want to delete this?</h3>
+
+User Name = <label>@Model.UserName</label>
+<br />
+Email = <label>@Model.Email</label>
+<br />
+Phone Number = <label>@Model.PhoneNumber</label>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-actions no-color">
+        <input type="submit" value="DeleteUser" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

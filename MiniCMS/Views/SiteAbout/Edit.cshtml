@@ -1,0 +1,155 @@
+﻿@using MiniCMS.Models
+@model SiteAboutUs
+@{
+    ViewBag.Title = "Log in";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="x_title">
+                <h2>Edit About</h2>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("Edit", "SiteAbout", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-label-left input_mask">
+                                <div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(U => U.Details, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextAreaFor(U => U.Details, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(U => U.Details, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.Email, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.Email, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.FaceBook, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.FaceBook, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.FaceBook, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.Instagram, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.Instagram, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.Instagram, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.Telegram, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.Telegram, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.Telegram, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.twitter, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.twitter, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.twitter, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.WhatsApp, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.WhatsApp, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.WhatsApp, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.LangId, new { @class = "col-md-2 control-label" })
+                                            @{
+                                                List<SelectListItem> lst = (List<SelectListItem>)ViewBag.language;
+                                            }
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.DropDownListFor(model => model.LangId, lst, "--select Language--", new { @class = "form-control", @Required = "Required" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+
+                                <div class="ln_solid"></div>
+                                <div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                <input type="file" id=" ImgUpload" onchange="ImgPre(this)" name="Image" class="form-control" />
+                                                <p>
+                                                    <img id="ImgPreview" style="width:100px;height:100px" />
+                                                </p>
+                                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group row">
+                                    <div class="col-md-9 col-sm-9  offset-md-3">
+                                        <a href="/Home/Index" class="btn btn-primary">
+                                            <span class="fa fa-hand-o-left" style="color:#000000">
+
+                                            </span>
+                                            Back to Home
+                                        </a>
+                                        <button type="submit" class="btn btn-success">
+                                            <span class="fa fa-save" style="color:#000000">
+
+                                            </span>
+                                            Save
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function ImgPre(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#ImgPreview").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+</script>

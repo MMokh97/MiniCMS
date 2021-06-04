@@ -1,0 +1,77 @@
+﻿@using MiniCMS.Models
+@model SiteVideos
+@{
+    ViewBag.Title = "Log in";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="x_title">
+                <h2>Details</h2>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("Edit", "SiteVideos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <form class="form-label-left input_mask">
+                                <div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(U => U.Title, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(U => U.Title, new { @class = "form-control", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(U => U.Title, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.Link, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.Link, new { @class = "form-control", @disabled = "disabled" })
+                                                @Html.ValidationMessageFor(E => E.Link, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.LangId, new { @class = "col-md-2 control-label" })
+                                            @{
+                                                List<SelectListItem> lst = (List<SelectListItem>)ViewBag.language;
+                                            }
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.DropDownListFor(model => model.LangId, lst, "--select Language--", new { @class = "form-control", @Required = "Required", @disabled = "disabled" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+                                <div class="ln_solid"></div>
+                                <div class="form-group row">
+                                    <div class="col-md-9 col-sm-9  offset-md-3">
+                                        <a href="/SiteVideos/Index" class="btn btn-primary">
+                                            <span class="fa fa-hand-o-left" style="color:#000000">
+
+                                            </span>
+                                            Back to Home
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

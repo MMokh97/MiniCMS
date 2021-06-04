@@ -1,0 +1,93 @@
+﻿@model MiniCMS.Models.SiteDataViewModel
+
+@{
+    ViewBag.Title = "SiteSettings";
+}
+
+<h2>SiteSettings</h2>
+
+@using (Html.BeginForm("SiteSettings", "AdminUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SiteName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                    @Html.EditorFor(model => model.SiteName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SiteName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SiteName_AR, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                    @Html.EditorFor(model => model.SiteName_AR, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SiteName_AR, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SiteDomain, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                    @Html.EditorFor(model => model.SiteDomain, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.SiteDomain, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SiteLogo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                    <input type="file" id="logoimg" name="logoimg" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.SiteLogo, "", new { @class = "text-danger" })
+                    <p>
+                        <img src="@Model.SiteLogo" style="width:100px;height:100px" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.SiteLogo_AR, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                    <input type="file" id="logoimg" name="logoimg_Ar" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.SiteLogo_AR, "", new { @class = "text-danger" })
+                    <p>
+                        <img src="@Model.SiteLogo_AR" style="width:100px;height:100px" />
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-group row">
+                @Html.LabelFor(model => model.A_phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                    @Html.EditorFor(model => model.A_phone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.A_phone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+

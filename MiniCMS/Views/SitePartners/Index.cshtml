@@ -1,0 +1,71 @@
+﻿@model List<MiniCMS.Models.SitePartners>
+<a href="/SitePartners/Create" class="btn btn-primary">
+    <span class="fa fa-plus"></span>
+    Add New Partner
+</a>
+<div class="table-responsive">
+    <table class="table table-striped jambo_table bulk_action">
+        <thead>
+            <tr class="headings">
+
+                <th class="column-title">Name </th>
+                <th class="column-title">Image </th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+
+
+        <tbody>
+            @if (Model != null)
+            {
+
+
+                foreach (var item in Model)
+                {
+
+
+                    <tr class="even pointer">
+
+                        <td class=" "><a href="/SitePartners/Details/@item.Id" target="_blank">@item.Name</a> </td>
+                        <td class=" "><img src="@Url.Content(item.Image)" width="30" height="30" class="img-responsive" /></td>
+                        <td>
+                            <div class="text-center">
+
+                                <a href="@Url.Action("Edit","SitePartners",new {id = item.Id })" class="btn btn-primary">
+                                    <i class="fa fa-edit"></i>
+                                    Edit
+                                </a>
+
+                            </div>
+                        </td>
+
+
+                        <td>
+                            <div class="text-center">
+
+                                <a href="@Url.Action("Delete","SitePartners",new { id = item.Id})" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                    Delete
+                                </a>
+
+                            </div>
+                        </td>
+
+
+
+
+
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>no data</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

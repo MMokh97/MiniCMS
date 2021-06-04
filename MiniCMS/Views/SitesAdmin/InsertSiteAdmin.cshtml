@@ -1,0 +1,182 @@
+﻿@using MiniCMS.Models
+@model SiteDataViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<div class="">
+    <div class="row">
+        <div class="col-md-6 ">
+            <div class="x_title">
+                <h2>Add new Site Admin</h2>
+                <div class="x_panel">
+                    <div class="x_content">
+                        <br />
+                        @using (Html.BeginForm("InsertSiteAdmin", "SitesAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <form class="form-label-left input_mask">
+                                <div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(U => U.A_username, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(U => U.A_username, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(U => U.A_username, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(E => E.A_Email, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(E => E.A_Email, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(E => E.A_Email, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(PH => PH.A_phone, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(PH => PH.A_phone, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(Ph => Ph.A_phone, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <span></span>
+
+                                <div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(pas => pas.A_Password, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback ">
+                                                @Html.PasswordFor(pas => pas.A_Password, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(pas => pas.A_Password, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(CP => CP.A_ConfPass, new { @class = "col-md-2 control-label" })
+                                                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                    @Html.PasswordFor(CP => CP.A_ConfPass, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(CP => CP.A_ConfPass, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="form-group row">
+                                                @Html.LabelFor(av => av.A_status, new { @class = "control-label col-md-2" })
+                                                <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                    @Html.CheckBoxFor(av => av.A_status, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(av => av.A_status, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @*<label for="" style="width:30%;float:left">Availability</label>
+                                            <input type="checkbox" class="form-control" style="width:40%;float:right" name="isavilable">*@
+                                    </div>
+
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div>
+                                    <h4>Site Data</h4>
+                                    <div class="ln_solid"></div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(U => U.SiteName, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(U => U.SiteName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(U => U.SiteName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(U => U.SiteName_AR, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(U => U.SiteName_AR, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(U => U.SiteName_AR, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(U => U.SiteDomain, new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                @Html.TextBoxFor(U => U.SiteDomain, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(U => U.SiteDomain, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(model => model.SiteLogo, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                <input type="file" id=" ImgUpload" onchange="ImgPre(this)" name="logoimg" class="form-control" />
+                                                <p>
+                                                    <img id="ImgPreview" style="width:100px;height:100px" />
+                                                </p>
+                                                @Html.ValidationMessageFor(model => model.SiteLogo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="form-group row">
+                                            @Html.LabelFor(model => model.SiteLogo_AR, htmlAttributes: new { @class = "col-md-2 control-label" })
+                                            <div class="col-md-6 col-sm-6  form-group has-feedback">
+                                                <input type="file" id=" ImgUpload" onchange="ImgPre2(this)" name="logoimg_Ar" class="form-control" />
+                                                <p>
+                                                    <img id="ImgPreview2" style="width:100px;height:100px" />
+                                                </p>
+                                                @Html.ValidationMessageFor(model => model.SiteLogo_AR, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group row">
+                                    <div class="col-md-9 col-sm-9  offset-md-3">
+                                        <a href="/SitesAdmin/Index" class="btn btn-primary"> Back to Home</a>
+                                        <button type="submit" class="btn btn-success">Add Admin</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        }
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function ImgPre(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#ImgPreview").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+<script>
+    function ImgPre2(input) {
+        if (input.files[0]) {
+            var uploadimg = new FileReader();
+            uploadimg.onload = function (displayimg) {
+                $("#ImgPreview2").attr('src', displayimg.target.result);
+            }
+            uploadimg.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
